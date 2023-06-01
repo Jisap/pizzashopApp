@@ -16,6 +16,8 @@ const PizzaDetails = ({ pizza }) => {
   const [additionalToppingPrice, setAdditionalToppingPrice] = useState(0);
   const [price, setPrice] = useState(0);
 
+  console.log('additionalTopping', additionalTopping)
+
   //set the price based on the pizza size
   useEffect(() => {
     size === 'small'
@@ -93,12 +95,17 @@ const PizzaDetails = ({ pizza }) => {
               setCrust={setCrust}
             />
             {/* toppings */}
-            <div>Choose tooping</div>
+            <div className='mb-4 text-xl font-semibold'>Choose tooping</div>
             {/* topping list */}
-            <div>
+            <div className='flex flex-1 flex-wrap gap-2 py-1 justify-center lg:justify-start'>
               { pizza.toppings?.map((topping, index) => {
                 return (
-                  <Topping key={index} />
+                  <Topping 
+                    key={index} 
+                    topping={topping} 
+                    additionalTopping={additionalTopping}
+                    setAdditionalTopping={setAdditionalTopping}
+                  />
                 )
               })}
             </div>
