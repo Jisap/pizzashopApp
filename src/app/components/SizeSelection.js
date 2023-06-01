@@ -18,7 +18,7 @@ const SizeSelection = ({ pizza, size, setSize }) => {
               size === 'small' 
                 ? 'border-2 border-orange p-[2px] rounded-full'
                 :'border-tansparent filter saturate-[.1]'
-              }`
+              } mb-1`
             }
 
           />
@@ -42,7 +42,7 @@ const SizeSelection = ({ pizza, size, setSize }) => {
             className={`${size === 'medium'
                 ? 'border-2 border-orange p-[2px] rounded-full'
                 : 'border-tansparent filter saturate-[.1]'
-              }`
+              } mb-1`
             }
 
           />
@@ -66,7 +66,7 @@ const SizeSelection = ({ pizza, size, setSize }) => {
             className={`${size === 'large'
                 ? 'border-2 border-orange p-[2px] rounded-full'
                 : 'border-tansparent filter saturate-[.1]'
-              }`
+              } mb-1`
             }
           />
           <input
