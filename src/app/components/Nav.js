@@ -8,7 +8,7 @@ import { CartContext } from "../context/CartContext";
 
 const Nav = () => {
 
-  const { isOpen, setIsOpen } = useContext(CartContext);
+  const { isOpen, setIsOpen, itemAmount } = useContext(CartContext);
 
   return (
     <nav className="absolute w-full py-8 ">
@@ -53,7 +53,7 @@ const Nav = () => {
             <div className="bg-tertiary w-6 h-6 rounded-full text-white flex justify-center items-center
               text-[13px] font-robotoCondensed absolute -bottom-2 -right-1
             ">
-              3
+              { itemAmount }
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
@@ -8,7 +8,26 @@ const CartProvider = ({ children }) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [cart, setCart] = useState([]);
-    const [cartTotal, setCartTotal] = useState(0);
+    const [cartTotal, setCartTotal] = useState(0); // cart total state
+    const [itemAmount, setItemAmount] = useState(0); // item amount state
+
+    // update item amount
+    useEffect(() => {
+        const amount = cart.reduce((a , c) => { // reduce obtiene el total de elementos del carrito 
+            return a + c.amount                 // devuelve el acumulado de la prop amount de cada elemento
+        },0);
+        setItemAmount( amount );
+    })
+
+    // update cart total price
+    useEffect(() => {
+        const price = cart.reduce((a, c) => {
+            return a + Number(c.price) * c.amount
+        },0)
+        setCartTotal(price)
+    },[cart])
+
+
 
     //add to cart
     const addToCart = (id, image, name, price, additionalTopping, size, crust) => { 
@@ -76,7 +95,7 @@ const CartProvider = ({ children }) => {
         }
     }
 
-    return <CartContext.Provider value={{ isOpen, setIsOpen, addToCart, cart, removeItem, increaseAmount, decreaseAmount }}>
+    return <CartContext.Provider value={{ isOpen, setIsOpen, addToCart, cart, removeItem, increaseAmount, decreaseAmount, itemAmount, cartTotal }}>
         { children }
     </CartContext.Provider>
 }

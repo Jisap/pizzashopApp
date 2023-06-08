@@ -9,7 +9,7 @@ import { CartContext } from '../context/CartContext';
 
 
 
-const PizzaDetails = ({ pizza }) => {
+const PizzaDetails = ({ pizza, setModal }) => {
 
   const [size, setSize] = useState('small');
   const [crust, setCrust] = useState('traditional');
@@ -120,7 +120,10 @@ const PizzaDetails = ({ pizza }) => {
         <div className='h-full flex items-center px-2 lg:items-end'>
           <button 
             className='btn btn-lg gradient w-full flex justify-center gap-x-2'
-            onClick={() => addToCart(pizza.id, pizza.image, pizza.name, price, additionalTopping, size, crust) }  
+            onClick={() => {
+              addToCart(pizza.id, pizza.image, pizza.name, price, additionalTopping, size, crust), 
+              setModal(false)
+            }}
           >
             <div>Add to cart for</div>
             <div>$ { price }</div>
