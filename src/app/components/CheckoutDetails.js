@@ -77,7 +77,7 @@ const CheckoutDetails = ({ setModal }) => {
             </div>
 
             {/* place order btn */}
-            <button className="btn btn-lg gradient">
+            <button className="btn btn-lg gradient w-full">
                 Place order
             </button>
           </div>
