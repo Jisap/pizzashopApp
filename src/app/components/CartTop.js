@@ -6,13 +6,13 @@ import { CartContext } from "../context/CartContext";
 
 const CartTop = () => {
 
-  const { setIsOpen } = useContext(CartContext)
+  const { setIsOpen, cartTotal } = useContext(CartContext)
 
   return (
     <div className="w-full h-20 border-b flex items-center justify-between px-10">
       {/* shopping bag text */}
       <div className="font-semibold">
-        Shopping Bag(3)
+        Shopping Bag ({cartTotal})
       </div>
       {/* close icon */}
       <div onClick={() => setIsOpen(false)} className="cursor-pointer group">
